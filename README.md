@@ -21,6 +21,7 @@ Source Control System: GIT
 CI/CD: GitHub Actions.
 
 GITstrategy:
+
 **master** — main branch
 
 **develop** — the main development branch. Each commit to the develop branch is a result of a feature development completion. Each commit should be a result of a merge of merge request from a feature branch.
@@ -30,6 +31,7 @@ GITstrategy:
 Что автоматизируем: Smoke + Regression планы прогона
 
 + Уровень GUI
+  
   a) 6 позитивных тестов
 
     i. 	1 тест на проверку поля для ввода на граничные значения
