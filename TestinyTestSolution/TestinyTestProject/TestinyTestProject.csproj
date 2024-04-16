@@ -36,7 +36,6 @@
 
   <ItemGroup>
     <Folder Include="Helpers\Configuration\" />
-    <Folder Include="Tests\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 
