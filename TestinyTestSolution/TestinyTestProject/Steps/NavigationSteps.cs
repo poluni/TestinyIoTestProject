@@ -12,12 +12,12 @@ public class NavigationSteps : BaseStep
     {
         _loginPage = new LoginPage(Driver);
     }
-    
+
     public DashboardPage SuccessfulLogin(User user)
     {
         return Login<DashboardPage>(user);
     }
-    
+
     public T Login<T>(User user) where T : BasePage
     {
         LoginPage = new LoginPage(Driver);
