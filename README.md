@@ -20,19 +20,19 @@ Source Control System: GIT
 
 CI/CD: GitHub Actions.
 
-GITstrategy:
+GIT strategy:
 
-**master** — main branch
+_master_ — main branch
 
-**develop** — the main development branch. Each commit to the develop branch is a result of a feature development completion. Each commit should be a result of a merge of merge request from a feature branch.
+_develop_ — the main development branch. Each commit to the develop branch is a result of a feature development completion. Each commit should be a result of a merge of merge request from a feature branch.
 
-**feature** — each new feature should reside in its own branch, which is created off of the latest develop version. When a feature is complete, it gets merged back into develop via merge request. After the feature branch is deleted.
+_feature_ — each new feature should reside in its own branch, which is created off of the latest develop version. When a feature is complete, it gets merged back into develop via merge request. After the feature branch is deleted.
 
 Что автоматизируем: Smoke + Regression планы прогона
 
 + Уровень GUI
   
-  a) 6 позитивных тестов
+  _a) 6 позитивных тестов_
 
     i. 	1 тест на проверку поля для ввода на граничные значения
 
@@ -46,7 +46,7 @@ GITstrategy:
 
     vi. 	1 тест на загрузку файла
 
-  b) 3 негативных теста
+  _b) 3 негативных теста_
 
     i. 	1 тест на использование некорректных данных (попытка загрузитьнедопустимый формат)
 
