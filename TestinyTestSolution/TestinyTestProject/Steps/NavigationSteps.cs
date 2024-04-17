@@ -4,23 +4,25 @@ using OpenQA.Selenium;
 
 namespace TestinyTestProject.Steps;
 
-public class NavigationSteps : BaseStep
+public class NavigationSteps(IWebDriver driver) : BaseStep(driver)
 {
-    private readonly LoginPage _loginPage;
-
-    public NavigationSteps(IWebDriver driver) : base(driver)
-    {
-        _loginPage = new LoginPage(Driver);
-    }
-
     public DashboardPage SuccessfulLogin(User user)
     {
         return Login<DashboardPage>(user);
     }
 
+    public TestCasesPage NavigateToTestCasesPage()
+    {
+        DashboardPage = new DashboardPage(driver);
+
+        DashboardPage.CreateTestCaseClick();
+
+        return new TestCasesPage(Driver);
+    }
+
     public T Login<T>(User user) where T : BasePage
     {
-        LoginPage = new LoginPage(Driver);
+        LoginPage = new LoginPage(driver);
 
         LoginPage.SetEmail(user.Email);
         LoginPage.SetPassword(user.Password);
