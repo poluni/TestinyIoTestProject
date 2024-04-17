@@ -8,6 +8,7 @@ public class DashboardPage(IWebDriver? driver, bool openByURL = false) : BasePag
     private const string END_POINT = "DP/dashboard";
 
     private static readonly By TitleBy = By.TagName("title");
+    private static readonly By CreateTestCaseLinkBy = By.XPath("//a/div/h4[contains(text(),'Create test cases')]");
 
     protected override bool EvaluateLoadedStatus()
     {
@@ -31,5 +32,11 @@ public class DashboardPage(IWebDriver? driver, bool openByURL = false) : BasePag
         return TitleLabel.Text.Contains("Dashboard");
     }
 
-    internal UIElement TitleLabel => new(Driver, TitleBy);
+    public void CreateTestCaseClick()
+    {
+        CreateTestCaseLink.Click();
+    }
+
+    private UIElement TitleLabel => new(Driver, TitleBy);
+    private UIElement CreateTestCaseLink => new(Driver, CreateTestCaseLinkBy);
 }

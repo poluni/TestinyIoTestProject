@@ -5,7 +5,7 @@ namespace TestinyTestProject.Pages;
 
 public class LoginPage(IWebDriver? driver, bool openByURL = false) : BasePage(driver, openByURL)
 {
-    private const string END_POINT = "";
+    private const string END_POINT = "login";
 
     private static readonly By EmailInputBy = By.Name("email");
     private static readonly By PswInputBy = By.Name("password");
@@ -36,7 +36,7 @@ public class LoginPage(IWebDriver? driver, bool openByURL = false) : BasePage(dr
         LoginInButton.Click();
     }
 
-    internal UIElement EmailInput => new(Driver, EmailInputBy);
-    internal UIElement PswInput => new(Driver, PswInputBy);
-    internal Button LoginInButton => new Button(Driver, LoginInButtonBy);
+    private UIElement EmailInput => new(Driver, EmailInputBy);
+    private UIElement PswInput => new(Driver, PswInputBy);
+    private Button LoginInButton => new Button(Driver, LoginInButtonBy);
 }
