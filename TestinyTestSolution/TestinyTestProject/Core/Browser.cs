@@ -5,22 +5,18 @@ namespace TestinyTestProject.Core;
 
 public class Browser
 {
-    public IWebDriver Driver { get; private set; }
+    public IWebDriver? Driver { get; }
 
     public Browser()
-    {
-    }
-
-    public void SetUpDriver()
     {
         Driver = Configurator.BrowserType?.ToLower() switch
         {
             "chrome" => new DriverFactory().GetChromeDriver(),
             _ => Driver
-        } ?? throw new InvalidOperationException("Browser is not supported.");
+        };
 
-        Driver.Manage().Window.Maximize();
-        Driver.Manage().Cookies.DeleteAllCookies();
-        //Driver!.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+        Driver?.Manage().Window.Maximize();
+        Driver?.Manage().Cookies.DeleteAllCookies();
+        Driver!.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
     }
 }
