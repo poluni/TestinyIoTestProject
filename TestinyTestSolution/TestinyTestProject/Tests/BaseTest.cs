@@ -13,6 +13,7 @@ public class BaseTest
     protected WaitsHelper WaitsHelper { get; private set; }
 
     protected NavigationSteps _navigationSteps;
+    protected TestCaseSteps _testCaseSteps;
 
     protected User Admin { get; private set; }
 
@@ -23,6 +24,7 @@ public class BaseTest
         WaitsHelper = new WaitsHelper(Driver, TimeSpan.FromSeconds(Configurator.WaitsTimeout));
 
         _navigationSteps = new NavigationSteps(Driver);
+        _testCaseSteps = new TestCaseSteps(Driver);
 
         Admin = new User
         {
