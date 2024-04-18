@@ -17,7 +17,7 @@ public class DriverFactory
         //chromeOptions.AddArguments("--log-level=3");
         //chromeOptions.AddArguments("disable-features=DownloadedBubble,DownloadedBubbleV2");
         //chromeOptions.AddArguments("--headless");
-        //chromeOptions.AddArguments("--remote-debugging-pipe");
+        chromeOptions.AddArguments("--remote-debugging-pipe");
 
         chromeOptions.SetLoggingPreference(LogType.Browser, LogLevel.All);
         chromeOptions.SetLoggingPreference(LogType.Driver, LogLevel.All);
