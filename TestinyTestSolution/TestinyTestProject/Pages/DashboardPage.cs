@@ -8,7 +8,7 @@ public class DashboardPage(IWebDriver? driver, bool openByURL = false) : BasePag
     private const string END_POINT = "DP/dashboard";
 
     private static readonly By TitleBy = By.TagName("title");
-    private static readonly By CreateTestCaseLinkBy = By.XPath("//a/div/h4[contains(text(),'Create test cases')]");
+    private static readonly By CreateTestCaseLinkBy = By.XPath("//h4[contains(text(),'Create test cases')]");
 
     protected override bool EvaluateLoadedStatus()
     {

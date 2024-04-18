@@ -1,13 +1,8 @@
-﻿using TestinyTestProject.Helpers.Configuration;
-using TestinyTestProject.Models;
+﻿using TestinyTestProject.Models;
 using TestinyTestProject.Fakers;
-using TestinyTestProject.Pages;
 using Bogus;
 using NLog;
-using TestinyTestProject.Core;
-using NLog.Fluent;
 using Allure.Net.Commons;
-using NUnit.Allure.Attributes;
 
 namespace TestinyTestProject.Tests;
 
