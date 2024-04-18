@@ -16,9 +16,9 @@ jobs:
 
     runs-on: ubuntu-latest
     
-    env:
-      Solution_Name: TestinyTestSolution.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: TestinyTestProject\TestinyTestProject.csproj                # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+    #env:
+     # Solution_Name: TestinyTestSolution.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
+     # Test_Project_Path: TestinyTestProject\TestinyTestProject.csproj                # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
 
 
     steps:
