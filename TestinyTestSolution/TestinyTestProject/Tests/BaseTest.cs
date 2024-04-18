@@ -3,6 +3,8 @@ using TestinyTestProject.Core;
 using TestinyTestProject.Helpers;
 using TestinyTestProject.Helpers.Configuration;
 using TestinyTestProject.Steps;
+using NLog;
+using TestinyTestProject.Core;
 
 namespace TestinyTestProject.Tests;
 using TestinyTestProject.Models;
@@ -16,7 +18,13 @@ public class BaseTest
     protected TestCaseSteps _testCaseSteps;
 
     protected User Admin { get; private set; }
-
+    
+    [OneTimeSetUp]
+    public static void SuiteSetup()
+    {
+        new NLogConfig().Config();
+    }
+    
     [SetUp]
     public void FactoryDriverTest()
     {

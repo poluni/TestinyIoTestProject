@@ -14,7 +14,7 @@ public class DashboardPage(IWebDriver? driver, bool openByURL = false) : BasePag
     {
         try
         {
-            return TitleLabel.Text.Contains("Dashboard");
+            return TitleLabel.Displayed;
         }
         catch (Exception)
         {

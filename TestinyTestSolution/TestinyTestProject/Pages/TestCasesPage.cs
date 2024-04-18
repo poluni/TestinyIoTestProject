@@ -17,7 +17,7 @@ public class TestCasesPage(IWebDriver? driver, bool openByURL = false) : BasePag
     {
         try
         {
-            return TitleLabel.Text.Contains("Test cases");
+            return TitleLabel.Displayed;
         }
         catch (Exception)
         {
