@@ -5,10 +5,15 @@ using TestinyTestProject.Helpers.Configuration;
 using TestinyTestProject.Steps;
 using NLog;
 using TestinyTestProject.Core;
-
-namespace TestinyTestProject.Tests;
+using Allure.Net.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using System.Text;
 using TestinyTestProject.Models;
 
+namespace TestinyTestProject.Tests;
+
+[AllureNUnit]
 public class BaseTest
 {
     protected IWebDriver Driver { get; private set; }
@@ -25,6 +30,12 @@ public class BaseTest
         new NLogConfig().Config();
     }
     
+    [OneTimeSetUp]
+    public static void GlobalSetup()
+    {
+        AllureLifecycle.Instance.CleanupResultDirectory();
+    }
+
     [SetUp]
     public void FactoryDriverTest()
     {
@@ -46,6 +57,15 @@ public class BaseTest
     [TearDown]
     public void TearDown()
     {
+        if (TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
+        {
+            Screenshot screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
+            byte[] screenshotBytes = screenshot.AsByteArray;
+
+            AllureApi.AddAttachment("Screenshot", "image/png", screenshotBytes);
+            AllureApi.AddAttachment("data.txt", "text/plain", Encoding.UTF8.GetBytes(""));
+        }
+        
         Driver.Quit();
     }
 }

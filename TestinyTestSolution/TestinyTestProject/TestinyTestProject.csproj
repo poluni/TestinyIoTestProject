@@ -10,16 +10,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="allureConfig.json" />
     <None Remove="appsettings.json" />
+    <None Remove="C:\Users\Olga\.nuget\packages\nlog.schema\5.2.8\contentFiles\any\any\NLog.xsd" />
+    <None Remove="NLog.config" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="allureConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="C:\Users\Olga\.nuget\packages\nlog.schema\5.2.8\contentFiles\any\any\NLog.xsd" />
+    <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Allure.NUnit" Version="2.12.0" />
     <PackageReference Include="Bogus" Version="35.5.0" />
     <PackageReference Include="NLog" Version="5.2.8" />
     <PackageReference Include="NLog.Schema" Version="5.2.8" />
@@ -40,12 +51,6 @@
   <ItemGroup>
     <Folder Include="Helpers\Configuration\" />
     <Folder Include="Resources\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

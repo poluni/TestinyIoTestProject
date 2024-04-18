@@ -1,4 +1,6 @@
-﻿using TestinyTestProject.Models;
+﻿using Allure.Net.Commons;
+using NUnit.Allure.Attributes;
+using TestinyTestProject.Models;
 using TestinyTestProject.Pages;
 using OpenQA.Selenium;
 
@@ -6,11 +8,13 @@ namespace TestinyTestProject.Steps;
 
 public class NavigationSteps(IWebDriver driver) : BaseStep(driver)
 {
-    public DashboardPage SuccessfulLogin(User user)
+    [AllureStep("LogIn with ")]
+    public DashboardPage SuccessfulLogin([Name("User: ")] User user)
     {
         return Login<DashboardPage>(user);
     }
 
+    [AllureStep("Navigate to test cases page")]
     public TestCasesPage NavigateToTestCasesPage()
     {
         DashboardPage = new DashboardPage(driver);
