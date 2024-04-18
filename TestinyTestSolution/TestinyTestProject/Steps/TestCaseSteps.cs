@@ -1,5 +1,4 @@
-﻿using Allure.Net.Commons;
-using NUnit.Allure.Attributes;
+﻿using Allure.NUnit.Attributes;
 using TestinyTestProject.Models;
 using TestinyTestProject.Pages;
 using OpenQA.Selenium;
