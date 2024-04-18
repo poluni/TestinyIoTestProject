@@ -2,9 +2,9 @@ name: .NET Core Desktop
 
 on:
   push:
-    branches: [ "main", "develop", "feature\\Ci-Cd" ]
+    branches: [ "develop"]
   pull_request:
-    branches: [ "main", "develop", "feature\\Ci-Cd" ]
+    branches: [ "develop" ]
 
 jobs:
 
@@ -16,10 +16,6 @@ jobs:
 
     runs-on: windows-latest
     
-    env:
-      Solution_Name: TestinyTestSolution                         # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: TestinyTestProject\TestinyTestProject.csproj                # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-
     steps:
     - name: Checkout
       uses: actions/checkout@v4
