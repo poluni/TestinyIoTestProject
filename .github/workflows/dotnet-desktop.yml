@@ -45,7 +45,7 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: dotnet test TestinyTestSolution.sln
+      run: dotnet test TestinyTestSolution
 
     - name: Load test report history
       uses: actions/checkout@v3
