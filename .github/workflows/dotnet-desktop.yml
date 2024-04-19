@@ -43,6 +43,14 @@ jobs:
             export DISPLAY=:99
             chromedriver --url-base=/wd/hub &
 
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Run headless test
+      uses: coactions/setup-xvfb@v1
+      with:
+          run: npm test
+          working-directory: ./ #optional
+
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test TestinyTestSolution
