@@ -16,7 +16,7 @@ public class DriverFactory
         chromeOptions.AddArguments("--disable-extensions");
         //chromeOptions.AddArguments("--log-level=3");
         //chromeOptions.AddArguments("disable-features=DownloadedBubble,DownloadedBubbleV2");
-        chromeOptions.AddArguments("--headless=new");
+        //chromeOptions.AddArguments("--headless=new");
         chromeOptions.AddArguments("--no-sandbox");
         chromeOptions.AddArguments("--disable-dev-shm-usage");
         chromeOptions.AddArguments("--remote-debugging-pipe");
