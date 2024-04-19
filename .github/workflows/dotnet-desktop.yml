@@ -30,7 +30,8 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: dotnet test ~/TestinyIoTestProject/TestinyTestSolution/TestinyTestProject/TestinyTestProject.csproj
+      run: dotnet test
+      working-directory: TestinyTestSolution/TestinyTestProject
 
     - name: Load test report history
       uses: actions/checkout@v3
