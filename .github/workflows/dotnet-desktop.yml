@@ -28,6 +28,10 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
+    - name: Install Chrome
+      uses: browser-actions/setup-chrome@latest
+    - run: chrome --version
+
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test TestinyTestSolution
