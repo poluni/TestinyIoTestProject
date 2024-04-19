@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
       with:
         fetch-depth: 0
 
@@ -30,8 +30,6 @@ jobs:
 
     - name: Install Chrome
       uses: browser-actions/setup-chrome
-      with:
-        chrome-version: '123.0.6312.123'
     - run: chrome --version
   
     - name: Install ChromeDriver
