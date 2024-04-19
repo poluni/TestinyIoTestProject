@@ -29,7 +29,7 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Install Chrome
-      uses: browser-actions/setup-chrom
+      uses: browser-actions/setup-chrome
       with:
         chrome-version: '123.0.6312.123'
     - run: chrome --version
