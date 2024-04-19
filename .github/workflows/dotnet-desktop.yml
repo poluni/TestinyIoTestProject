@@ -5,7 +5,9 @@ on:
     branches: [ "feature/Ci-Cd" ]
   pull_request:
     branches: [ "feature/Ci-Cd" ]
-
+    paths:
+    - '**.cs'
+    - '**.csproj'
 jobs:
 
   test:
@@ -15,14 +17,6 @@ jobs:
         configuration: [Debug]
 
     runs-on: ubuntu-latest
-    
-    defaults:
-      run:
-        working-directory: ./TestinyTestSolution
-    #env:
-     # Solution_Name: TestinyTestSolution.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
-     # Test_Project_Path: TestinyTestProject\TestinyTestProject.csproj                # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-
 
     steps:
     - name: Checkout
@@ -47,7 +41,6 @@ jobs:
       with:
         ref: gh-pages
         path: gh-pages
-
         
     - name: Build test report
       uses: simple-elf/allure-report-action@v1.7
