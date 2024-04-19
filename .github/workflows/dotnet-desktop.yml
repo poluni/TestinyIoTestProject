@@ -5,9 +5,7 @@ on:
     branches: [ "feature/Ci-Cd" ]
   pull_request:
     branches: [ "feature/Ci-Cd" ]
-    paths:
-    - '**.cs'
-    - '**.csproj'
+
 jobs:
 
   test:
@@ -32,7 +30,7 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: dotnet test
+      run: dotnet test ~/TestinyIoTestProject/TestinyTestSolution/TestinyTestProject/TestinyTestProject.csproj
 
     - name: Load test report history
       uses: actions/checkout@v3
