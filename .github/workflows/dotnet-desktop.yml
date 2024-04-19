@@ -24,14 +24,14 @@ jobs:
 
     # Install the .NET Core workload
     - name: Install .NET Core
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
 
     - name: Install Chrome
-      uses: browser-actions/setup-chrome
+      uses: browser-actions/setup-chrome@v1
       with:
-        chromedriver-version: '123.0.6312.123'
+        chrome-version: 123
     - run: chrome --version
   
    # - name: Install ChromeDriver
