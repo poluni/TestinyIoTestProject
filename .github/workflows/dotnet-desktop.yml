@@ -40,12 +40,12 @@ jobs:
         # Optional: do not specify to match Chrome's version
         chromedriver-version: '123.0.6312.123'
     - run: |
-            export DISPLAY=:99
+            #export DISPLAY=:99
             chromedriver --url-base=/wd/hub &
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: dotnet test TestinyTestSolution --browser headless-chrome
+      run: dotnet test TestinyTestSolution
 
     - name: Load test report history
       uses: actions/checkout@v3
