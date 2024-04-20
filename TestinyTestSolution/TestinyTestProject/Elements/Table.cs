@@ -1,4 +1,6 @@
 using OpenQA.Selenium;
+using TestinyTestProject.Helpers.Configuration;
+using TestinyTestProject.Helpers;
 
 namespace TestinyTestProject.Elements;
 
@@ -19,6 +21,8 @@ public class Table
         _uiElement = new UIElement(webDriver, by);
         _columns = new List<string>();
         _rows = new List<TableRow>();
+
+        WaitsHelper waitsHelper = new WaitsHelper(webDriver, TimeSpan.FromSeconds(Configurator.WaitsTimeout));
 
         foreach (var columnElement in _uiElement.FindUIElements(By.TagName("th")))
         {
