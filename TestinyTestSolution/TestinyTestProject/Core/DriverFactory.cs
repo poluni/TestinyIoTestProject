@@ -14,9 +14,6 @@ public class DriverFactory
         chromeOptions.AddArguments("--incognito");
         chromeOptions.AddArguments("--disable-gpu");
         chromeOptions.AddArguments("--disable-extensions");
-        //chromeOptions.AddArguments("--log-level=3");
-        //chromeOptions.AddArguments("disable-features=DownloadedBubble,DownloadedBubbleV2");
-        //chromeOptions.AddArguments("--headless");
 
         chromeOptions.SetLoggingPreference(LogType.Browser, LogLevel.All);
         chromeOptions.SetLoggingPreference(LogType.Driver, LogLevel.All);
