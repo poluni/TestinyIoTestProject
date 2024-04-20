@@ -11,7 +11,7 @@ public class TestCasesPage(IWebDriver? driver, bool openByURL = false) : BasePag
     private static readonly By CreateQuickTestCaseButtonBy = By.XPath("//button/div[text()='Quick create']");
     private static readonly By TitleNewTestCaseInputBy = By.XPath("//input[@placeholder='New test case']");
     private static readonly By SaveQuickNewTestCaseButtonBy = By.XPath("//button[@title='Commit']");
-    private static readonly By TestCaseTableBy = By.CssSelector("table.sc-bWbSeO.ckdLtt");
+    private static readonly By TestCaseTableBy = By.XPath("//div/table");
 
     protected override bool EvaluateLoadedStatus()
     {
