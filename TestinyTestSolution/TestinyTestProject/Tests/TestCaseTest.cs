@@ -38,4 +38,35 @@ public class TestCaseTest : BaseLoginTest
                Is.EqualTo(_testCase.Title));
         }
     }
+
+    [Test]
+    public void DeleteTestCaseTest()
+    {
+        {
+            AllureApi.SetTestName("Delete test case.");
+            AllureApi.SetDescription("Delete test case. The test case is successfull deleted.");
+            AllureApi.SetSeverity(SeverityLevel.critical);
+            AllureApi.AddTags("UI");
+            AllureApi.AddParentSuite("TestCases");
+
+            //Arrange
+            _testCase = TestCase.Generate();
+
+            Logger.Log(LogLevel.Info, _testCase.Title);
+
+            _navigationSteps.NavigateToTestCasesPage();
+            _testCaseSteps.AddQuickNewTestCase(_testCase);
+
+            //Act
+
+            //Assert
+
+            var actualTestCaseTitle = _testCaseSteps.GetTestCaseTitle(_testCase);
+
+            Logger.Log(LogLevel.Info, actualTestCaseTitle);
+
+            Assert.That(actualTestCaseTitle,
+               Is.EqualTo(_testCase.Title));
+        }
+    }
 }
