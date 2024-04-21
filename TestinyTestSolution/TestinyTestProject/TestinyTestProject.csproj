@@ -47,10 +47,12 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="WebDriverManager" Version="2.17.2" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Helpers\Configuration\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

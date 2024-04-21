@@ -1,5 +1,7 @@
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
+using TestinyTestProject.Models;
+using TestinyTestProject.Models.Enums;
 
 namespace TestinyTestProject.Helpers.Configuration
 {
@@ -38,12 +40,42 @@ namespace TestinyTestProject.Helpers.Configuration
                 var child = Configuration.GetSection("AppSettings");
 
                 appSettings.URL = child["URL"];
-                appSettings.Username = child["Username"];
-                appSettings.Password = child["Password"];
+                appSettings.URI = child["URI"];
 
                 return appSettings;
             }
         }
+
+        public static List<User?> Users
+        {
+            get
+            {
+                List<User?> users = new List<User?>();
+                var child = Configuration.GetSection("Users");
+                foreach (var section in child.GetChildren())
+                {
+                    var user = new User
+                    {
+                        Password = section["Password"],
+                        Username = section["Username"],
+                        ApiKey = section["API_KEY"]
+                    };
+                    user.UserType = section["UserType"].ToLower() switch
+                    {
+                        "admin" => UserType.Admin,
+                        _ => user.UserType
+                    };
+
+                    users.Add(user);
+                }
+
+                return users;
+            }
+        }
+
+        public static User? Admin => Users.Find(x => x?.UserType == UserType.Admin);
+
+        public static User? UserByUsername(string username) => Users.Find(x => x?.Username == username);
 
         public static string? BrowserType => Configuration[nameof(BrowserType)];
 

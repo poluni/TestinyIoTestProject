@@ -1,7 +1,11 @@
-﻿namespace TestinyTestProject.Models;
+﻿using TestinyTestProject.Models.Enums;
 
-public class User
+namespace TestinyTestProject.Models;
+
+public record User
 {
-    public required string Email { get; set; }
-    public required string Password { get; set; }
+    public UserType UserType { get; set; }
+    public string Username { get; init; } = string.Empty;
+    public string Password { get; init; } = string.Empty;
+    public string ApiKey { get; set; }
 }
