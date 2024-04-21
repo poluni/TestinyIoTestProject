@@ -71,6 +71,25 @@ public class TestCaseSteps(IWebDriver driver) : BaseStep(driver)
         return txt;
     }
 
+    [AllureStep("Focus TestCase copied info")]
+    public TestCasesPage FocusTestCaseCopiedInfo()
+    {
+        TestCasesPage testCasesPage = new TestCasesPage(driver);
+
+        testCasesPage.AllTestCaseLinkClick();
+        testCasesPage.AllTestCaseLinkFocus();
+
+        return new TestCasesPage(Driver);
+    }
+
+    [AllureStep("Message about copied text.")]
+    internal string GetTestCaseCopiedInfo()
+    {
+        TestCasesPage testCasesPage = new TestCasesPage(driver);
+
+        return testCasesPage.GetCopiedMessageTestCaseText();
+    }
+
     [AllureStep("Current count test cases is ")]
     public int GetCountSelectedTestCase()
     {

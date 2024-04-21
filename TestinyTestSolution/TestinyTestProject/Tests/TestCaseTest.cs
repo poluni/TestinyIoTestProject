@@ -23,7 +23,7 @@ public class TestCaseTest : BaseLoginTest
             AllureApi.SetTestName("Create quick not first new test case with 200 chars title.");
             AllureApi.SetDescription("Create quick not first new test case with 200 chars title. The test case is successfull created.");
             AllureApi.SetSeverity(SeverityLevel.normal);
-            AllureApi.AddTags("UI");
+            AllureApi.AddTags("UI", "Positive");
             AllureApi.AddParentSuite("TestCases");
 
             //TO DO сделать подготовку через API первого test case
@@ -51,7 +51,7 @@ public class TestCaseTest : BaseLoginTest
             AllureApi.SetTestName("Delete test case.");
             AllureApi.SetDescription("Delete test case. The test case is successfull deleted.");
             AllureApi.SetSeverity(SeverityLevel.normal);
-            AllureApi.AddTags("UI");
+            AllureApi.AddTags("UI", "Positive");
             AllureApi.AddParentSuite("TestCases");          
 
             _navigationSteps.NavigateToTestCasesPage();
@@ -71,7 +71,7 @@ public class TestCaseTest : BaseLoginTest
             AllureApi.SetTestName("Create quick new test case with 201 chars title.");
             AllureApi.SetDescription("Create quick new test case with 201 chars title. The test case is not created. Error message is presents.");
             AllureApi.SetSeverity(SeverityLevel.normal);
-            AllureApi.AddTags("UI");
+            AllureApi.AddTags("UI", "Negative");
             AllureApi.AddParentSuite("TestCases");
 
             _testCase = TestCaseWithInvalidTitleFaker.Generate();
@@ -94,6 +94,58 @@ public class TestCaseTest : BaseLoginTest
             });
         }
     }
+
+    [Test]
+    public void AddQuickNewTestCaseWithWhitespaceTitleTest()
+    {
+        {
+            AllureApi.SetTestName("Create quick new test case with whitespace char title.");
+            AllureApi.SetDescription("Create quick new test case with whitespace char title. The test case is not created. Error message is presents.");
+            AllureApi.SetSeverity(SeverityLevel.trivial);
+            AllureApi.AddTags("UI", "Negative");
+            AllureApi.AddParentSuite("TestCases");
+
+            _testCase = new TestCase 
+            { 
+                Title = " "
+            };
+
+            Logger.Log(LogLevel.Info, _testCase.Title);
+
+            _navigationSteps.NavigateToTestCasesPage();
+            _testCaseSteps.ValidateTitleQuickNewTestCase(_testCase);
+
+            var errorMessage = _testCaseSteps.GetErrorMessageInvalidTitleQuickNewTestCase();
+
+            Logger.Log(LogLevel.Info, errorMessage);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(errorMessage,
+                    Is.EqualTo("Must have at least 1 characters (leading/trailing white spaces not counted)."));
+                Assert.That(_testCaseSteps.IsDisabledSaveQuickNewTestCaseButton(), Is.EqualTo(true));
+            });
+        }
+    }
+
+    [Test]
+    public void GetCopiedMessageTestCaseTest()
+    {
+        {
+            AllureApi.SetTestName("Message about copied TestCase is displayed");
+            AllureApi.SetSeverity(SeverityLevel.trivial);
+            AllureApi.AddTags("UI", "Negative");
+            AllureApi.AddParentSuite("TestCases");
+
+            _navigationSteps.NavigateToTestCasesPage();
+            _testCaseSteps.FocusTestCaseCopiedInfo();
+
+            string actualTxt = _testCaseSteps.GetTestCaseCopiedInfo();
+
+            Assert.That(actualTxt,
+                    Is.EqualTo("Copied link to clipboard"));
+        }
+    }
     /*
     [Test]
     public void ImportCSVNewTestCaseTest()
@@ -102,7 +154,7 @@ public class TestCaseTest : BaseLoginTest
             AllureApi.SetTestName("Import CSV file with not first new test case.");
             AllureApi.SetDescription("Import CSV file with not first new test case. The test case is successfull created.");
             AllureApi.SetSeverity(SeverityLevel.critical);
-            AllureApi.AddTags("UI");
+            AllureApi.AddTags("UI", "Positive");
             AllureApi.AddParentSuite("TestCases");
 
             //TO DO сделать подготовку через API первого test case

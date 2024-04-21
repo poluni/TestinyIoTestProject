@@ -16,11 +16,13 @@ public class TestCasesPage(IWebDriver? driver, bool openByURL = false) : BasePag
     private static readonly By DisabledSaveQuickNewTestCaseButtonBy = By.XPath("//button[@title='Commit' and @disabled]");
     private static readonly By TestCaseTableBy = By.TagName("table");
     private static readonly By AllTestCaseUnselectedCheckboxBy = By.XPath("//label[@title='Select all'][1]");
+    private static readonly By AllTestCaseLinkBy = By.XPath("//a[@href='https://app.testiny.io/DP/testcases']/button");
     private static readonly By CountTestCaseTextBy = By.XPath("//div/span[text()='All test cases']/following::span[1]");
     private static readonly By DeleteButtonBy = By.XPath("//div[@class='button-label' and text()='Delete']");
     private static readonly By DeletePopUpWindowTextBy = By.XPath("//h4[text()='Confirm test case deletion']");
     private static readonly By DeleteConfirmationButtonBy = By.XPath("//div[@aria-label='Confirm test case deletion']//div[@class='button-label' and text()='Delete']");
     private static readonly By ErrorMessageTestCaseTitleTextBy = By.XPath("//div[@id='portal-root']//p");
+    private static readonly By MessageCopyTestCaseTextBy = By.XPath("//div[@id='portal-root']//span");
 
     protected override bool EvaluateLoadedStatus()
     {
@@ -79,6 +81,21 @@ public class TestCasesPage(IWebDriver? driver, bool openByURL = false) : BasePag
         AllTestCaseUnselectedCheckbox.Click();
     }
 
+    public void AllTestCaseLinkClick()
+    {
+        AllTestCaseLink.Click();
+    }
+
+    public void AllTestCaseLinkFocus()
+    {
+        AllTestCaseLink.MoveToElement();
+    }
+
+    public string GetCopiedMessageTestCaseText()
+    {
+        return MessageCopyTestCaseText.Text.Trim();
+    }
+
     public void DeleteButtonClick()
     {
         DeleteButton.Click();
@@ -117,9 +134,11 @@ public class TestCasesPage(IWebDriver? driver, bool openByURL = false) : BasePag
     private Button DisabledSaveQuickNewTestCaseButton => new Button(Driver, DisabledSaveQuickNewTestCaseButtonBy);
     internal Table TestCaseTable => new Table(Driver, TestCaseTableBy);
     private UIElement AllTestCaseUnselectedCheckbox => new (Driver, AllTestCaseUnselectedCheckboxBy);
+    private UIElement AllTestCaseLink => new(Driver, AllTestCaseLinkBy);
     private UIElement CountTestCaseText => new(Driver, CountTestCaseTextBy);
     private Button DeleteButton => new Button(Driver, DeleteButtonBy);
     private UIElement DeletePopUpWindowText => new(Driver, DeletePopUpWindowTextBy);
     private Button DeleteConfirmationButton => new Button(Driver, DeleteConfirmationButtonBy);
     private UIElement ErrorMessageTestCaseTitleText => new(Driver, ErrorMessageTestCaseTitleTextBy);
+    private UIElement MessageCopyTestCaseText => new(Driver, MessageCopyTestCaseTextBy);
 }
