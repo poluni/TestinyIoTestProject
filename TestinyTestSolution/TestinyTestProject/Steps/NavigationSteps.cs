@@ -13,6 +13,16 @@ public class NavigationSteps(IWebDriver driver) : BaseStep(driver)
         return Login<DashboardPage>(user);
     }
 
+    [AllureStep("Navigate to import test case ")]
+    public TestCasesImportDialogue NavigateToImportTestCasesPage()
+    {
+        TestCasesPage = new TestCasesPage(driver);
+
+        TestCasesPage.ImportNewTestCaseClick();
+
+        return new TestCasesImportDialogue(Driver);
+    }
+
     [AllureStep("Navigate to test cases page")]
     public TestCasesPage NavigateToTestCasesPage()
     {

@@ -10,4 +10,5 @@ public class BaseStep(IWebDriver driver)
     protected LoginPage? LoginPage { get; set; }
     protected DashboardPage? DashboardPage { get; set; }
     protected TestCasesPage? TestCasesPage { get; set; }
+    protected TestCasesImportDialogue? TestCasesImportDialogue { get; set; }
 }

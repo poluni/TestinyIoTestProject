@@ -14,7 +14,7 @@
     <None Remove="appsettings.json" />
     <None Remove="C:\Users\Olga\.nuget\packages\nlog.schema\5.2.8\contentFiles\any\any\NLog.xsd" />
     <None Remove="NLog.config" />
-    <None Remove="Resources\testiny_testcase_import_sample.csv" />
+    <None Remove="Resources\sample_testcase.csv" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,9 +26,6 @@
     </Content>
     <Content Include="C:\Users\Olga\.nuget\packages\nlog.schema\5.2.8\contentFiles\any\any\NLog.xsd" />
     <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\testiny_testcase_import_sample.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -54,6 +51,10 @@
 
   <ItemGroup>
     <Folder Include="Helpers\Configuration\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Resources\sample_testcase.csv" />
   </ItemGroup>
 
 </Project>

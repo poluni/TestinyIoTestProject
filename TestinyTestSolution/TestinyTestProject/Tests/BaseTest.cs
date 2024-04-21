@@ -18,6 +18,7 @@ public class BaseTest
 
     protected NavigationSteps _navigationSteps;
     protected TestCaseSteps _testCaseSteps;
+    protected ImportFilesSteps _importFilesSteps;
 
     protected User Admin { get; private set; }
     
@@ -41,6 +42,7 @@ public class BaseTest
 
         _navigationSteps = new NavigationSteps(Driver);
         _testCaseSteps = new TestCaseSteps(Driver);
+        _importFilesSteps = new ImportFilesSteps(Driver);
 
         Admin = new User
         {

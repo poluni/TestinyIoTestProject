@@ -17,6 +17,5 @@ public class Browser
 
         Driver?.Manage().Window.Maximize();
         Driver?.Manage().Cookies.DeleteAllCookies();
-        //Driver!.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
     }
 }

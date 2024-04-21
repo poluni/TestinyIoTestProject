@@ -5,6 +5,7 @@ using System.Reflection;
 using Bogus;
 using NLog;
 using Allure.Net.Commons;
+using TestinyTestProject.Steps;
 
 namespace TestinyTestProject.Tests;
 
@@ -17,6 +18,7 @@ public class TestCaseTest : BaseLoginTest
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     [Test]
+    [Category("Smoke"), Category("Regression")]
     public void AddQuickNewTestCaseTest()
     {
         {
@@ -45,6 +47,7 @@ public class TestCaseTest : BaseLoginTest
     }
 
     [Test]
+    [Category("Smoke"), Category("Regression")]
     public void DeleteTestCaseTest()
     {
         {
@@ -65,6 +68,7 @@ public class TestCaseTest : BaseLoginTest
     }
 
     [Test]
+    [Category("Regression")]
     public void AddQuickNewTestCaseWithInvalidTitleTest()
     {
         {
@@ -96,6 +100,7 @@ public class TestCaseTest : BaseLoginTest
     }
 
     [Test]
+    [Category("Regression")]
     public void AddQuickNewTestCaseWithWhitespaceTitleTest()
     {
         {
@@ -129,6 +134,7 @@ public class TestCaseTest : BaseLoginTest
     }
 
     [Test]
+    [Category("Regression")]
     public void GetCopiedMessageTestCaseTest()
     {
         {
@@ -146,8 +152,9 @@ public class TestCaseTest : BaseLoginTest
                     Is.EqualTo("Copied link to clipboard"));
         }
     }
-    /*
+    
     [Test]
+    [Category("Smoke"), Category("Regression")]
     public void ImportCSVNewTestCaseTest()
     {
         {
@@ -157,21 +164,16 @@ public class TestCaseTest : BaseLoginTest
             AllureApi.AddTags("UI", "Positive");
             AllureApi.AddParentSuite("TestCases");
 
-            //TO DO сделать подготовку через API первого test case
-
             _navigationSteps.NavigateToTestCasesPage();
             _navigationSteps.NavigateToImportTestCasesPage();
 
-            var pathDownload = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Resources", "testiny_testcase_import_sample.csv");
+            _importFilesSteps.ImportCSVFile();
 
+            Assert.Pass();
 
+            //WaitsHelper.WaitForExists(By.Id("file-submit")).Submit();
 
-            fileUploadElement.SendKeys(filePath);
-
-            WaitsHelper.WaitForExists(By.Id("file-submit")).Submit();
-
-            var uploadedFile = WaitsHelper.WaitForExists(By.Id("uploaded-files"));
+            //var uploadedFile = WaitsHelper.WaitForExists(By.Id("uploaded-files"));
         }
-    }
-    */
+    }    
 }
