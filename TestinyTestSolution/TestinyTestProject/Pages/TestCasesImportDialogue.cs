@@ -95,6 +95,6 @@ public class TestCasesImportDialogue(IWebDriver? driver, bool openByURL = false)
     private UIElement FileTitleInputText => new(Driver, FileTitleInputTextBy);
     private UIElement MappingFieldsText => new(Driver, MappingFieldsTextBy);
     private Button ConfirmMappingFieldsButton => new Button(Driver, ConfirmMappingFieldsButtonBy);
-    private Button ConfirmImportButton => new Button(Driver, ConfirmImportButtonBy);
+    private IWebElement ConfirmImportButton => WaitsHelper.FluentWaitForElement(ConfirmImportButtonBy);
     private UIElement FileInput => new(Driver, FileInputBy);
 }
