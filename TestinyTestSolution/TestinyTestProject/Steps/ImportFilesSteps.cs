@@ -1,10 +1,7 @@
 ﻿using Allure.NUnit.Attributes;
-using TestinyTestProject.Models;
-using TestinyTestProject.Helpers;
 using System.Reflection;
 using TestinyTestProject.Pages;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 
 namespace TestinyTestProject.Steps;
 
@@ -20,14 +17,25 @@ public class ImportFilesSteps(IWebDriver driver) : BaseStep(driver)
     {
         TestCasesImportDialogue = new TestCasesImportDialogue(Driver, false);
 
-        var fileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Resources", "testiny_testcase_import_sample.csv");
+        try
+        {
+            if (TestCasesImportDialogue.IsPageOpened())
+                TestCasesImportDialogue.ImportCSVButtonClick();
+            if (TestCasesImportDialogue.IsDragDropPageOpened())
+            {
+                var pathDownload = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Resources");
+                FileInfo[] files = new DirectoryInfo(pathDownload).GetFiles(searchPattern: $"*.csv");
+                var fileName = Path.Combine(pathDownload, Path.GetFileName(files[0].FullName));
 
-        if (TestCasesImportDialogue.IsPageOpened())
-            TestCasesImportDialogue.ImportCSVButtonClick();
-        if (TestCasesImportDialogue.IsDragDropPageOpened())
-            TestCasesImportDialogue.InputFileName(fileName);
-        if (TestCasesImportDialogue.IsMappingFieldsPageOpened())
-            TestCasesImportDialogue.ConfirmMappingFieldsButtonClick();
+                TestCasesImportDialogue.InputFileName(fileName);
+            }
+            if (TestCasesImportDialogue.IsMappingFieldsPageOpened())
+                TestCasesImportDialogue.ConfirmMappingFieldsButtonClick();
+        }
+        catch (FileNotFoundException)
+        {
+            new FileNotFoundException("File Not Found.");
+        }
 
         return (T)Activator.CreateInstance(typeof(T), Driver, false);
     }
