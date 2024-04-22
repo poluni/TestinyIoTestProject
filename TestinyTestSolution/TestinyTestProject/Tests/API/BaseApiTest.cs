@@ -22,12 +22,6 @@ public class BaseApiTest
         TestCaseService = new TestCaseService(restClient);
     }
     
-    [OneTimeSetUp]
-    public static void GlobalSetup()
-    {
-        AllureLifecycle.Instance.CleanupResultDirectory();
-    }
-    
     [OneTimeTearDown]
     public void TearDownAPI()
     {
