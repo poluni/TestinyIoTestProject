@@ -18,7 +18,8 @@ public class TestCaseApiTest : BaseApiTest
     {
         _testCase = new TestCaseApi
         {
-            Title = TestCase.Generate().Title
+            Title = TestCase.Generate().Title,
+            Priority = 1
         };
 
         var actualTestCase = TestCaseService!.AddTestCase(_testCase);
