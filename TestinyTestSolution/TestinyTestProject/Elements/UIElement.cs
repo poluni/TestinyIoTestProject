@@ -4,6 +4,9 @@ using TestinyTestProject.Helpers;
 using TestinyTestProject.Helpers.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using System;
 
 namespace TestinyTestProject.Elements;
 
@@ -129,6 +132,11 @@ public class UIElement : IWebElement
     public void Hover()
     {
         _actions.MoveToElement(_webElement).Build().Perform();
+    }
+
+    public void RemoveStyleByXPath()
+    {
+        ((IJavaScriptExecutor)_webDriver).ExecuteScript("arguments[0].removeAttribute('style')", _webElement);
     }
 
     public string TagName => _webElement.TagName;

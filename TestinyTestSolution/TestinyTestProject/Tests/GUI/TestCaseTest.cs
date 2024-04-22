@@ -163,13 +163,9 @@ public class TestCaseTest : BaseLoginTest
             _navigationSteps.NavigateToTestCasesPage();
             _navigationSteps.NavigateToImportTestCasesPage();
 
-            _importFilesSteps.ImportCSVFile();
+            _importFilesSteps.SuccessfullImportCSVFile();
 
-            Assert.Pass();
-
-            //WaitsHelper.WaitForExists(By.Id("file-submit")).Submit();
-
-            //var uploadedFile = WaitsHelper.WaitForExists(By.Id("uploaded-files"));
+            Assert.That(_testCaseSteps.IsOpenedTestCasesPage());
         }
     }
 }
