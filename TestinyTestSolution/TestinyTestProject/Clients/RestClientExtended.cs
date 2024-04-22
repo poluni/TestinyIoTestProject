@@ -17,9 +17,7 @@ public sealed class RestClientExtended
 
         _client = new RestClient(options);
         _client.AddDefaultHeader("Accept", "application/json");
-        _client.AddDefaultHeader("X-Api-Key", Configurator.Admin.ApiKey);
-
-        Debug.Assert(Configurator.Admin != null, "Configurator.Admin != null");
+        _client.AddDefaultHeader("X-Api-Key", Configurator.AppSettings.ApiKey);
     }
 
     public void Dispose()

@@ -7,7 +7,7 @@ using NLog;
 using Allure.Net.Commons;
 using TestinyTestProject.Steps;
 
-namespace TestinyTestProject.Tests;
+namespace TestinyTestProject.Tests.GUI;
 
 [TestFixture]
 public class TestCaseTest : BaseLoginTest
@@ -27,8 +27,6 @@ public class TestCaseTest : BaseLoginTest
             AllureApi.SetSeverity(SeverityLevel.normal);
             AllureApi.AddTags("UI", "Positive");
             AllureApi.AddParentSuite("TestCases");
-
-            //TO DO сделать подготовку через API первого test case
 
             _testCase = TestCase.Generate();
 
@@ -55,11 +53,9 @@ public class TestCaseTest : BaseLoginTest
             AllureApi.SetDescription("Delete test case. The test case is successfull deleted.");
             AllureApi.SetSeverity(SeverityLevel.normal);
             AllureApi.AddTags("UI", "Positive");
-            AllureApi.AddParentSuite("TestCases");          
+            AllureApi.AddParentSuite("TestCases");
 
             _navigationSteps.NavigateToTestCasesPage();
-
-            //TO DO сделать подготовку через API первого test case
 
             _testCaseSteps.DeleteTestCase();
 
@@ -110,8 +106,8 @@ public class TestCaseTest : BaseLoginTest
             AllureApi.AddTags("UI", "Negative");
             AllureApi.AddParentSuite("TestCases");
 
-            _testCase = new TestCase 
-            { 
+            _testCase = new TestCase
+            {
                 Title = " "
             };
 
@@ -135,7 +131,7 @@ public class TestCaseTest : BaseLoginTest
 
     [Test]
     [Category("Regression")]
-    public void GetCopiedMessageTestCaseTest()
+    public void VerifyCopyMessageTestCaseTest()
     {
         {
             AllureApi.SetTestName("Message about copied TestCase is displayed");
@@ -152,7 +148,7 @@ public class TestCaseTest : BaseLoginTest
                     Is.EqualTo("Copied link to clipboard"));
         }
     }
-    
+
     [Test]
     [Category("Smoke"), Category("Regression")]
     public void ImportCSVNewTestCaseTest()
@@ -175,5 +171,5 @@ public class TestCaseTest : BaseLoginTest
 
             //var uploadedFile = WaitsHelper.WaitForExists(By.Id("uploaded-files"));
         }
-    }    
+    }
 }

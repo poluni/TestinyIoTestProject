@@ -1,6 +1,8 @@
-﻿namespace TestinyTestProject.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace TestinyTestProject.Models;
 
 public class TestCase
 {
-    public required string Title { get; set; }
+    [JsonPropertyName("title")]  public required string Title { get; set; }
 }

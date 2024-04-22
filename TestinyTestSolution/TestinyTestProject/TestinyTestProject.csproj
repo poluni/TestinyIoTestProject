@@ -52,7 +52,6 @@
 
   <ItemGroup>
     <Folder Include="Helpers\Configuration\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

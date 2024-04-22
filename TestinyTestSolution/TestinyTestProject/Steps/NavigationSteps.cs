@@ -37,7 +37,7 @@ public class NavigationSteps(IWebDriver driver) : BaseStep(driver)
     {
         LoginPage = new LoginPage(driver);
 
-        LoginPage.SetEmail(user.Email);
+        LoginPage.SetEmail(user.Username);
         LoginPage.SetPassword(user.Password);
         LoginPage.LogInClick();
 

@@ -1,6 +1,6 @@
-﻿namespace TestinyTestProject.Tests;
+﻿namespace TestinyTestProject.Tests.GUI;
 
-public class BaseLoginTest : BaseTest
+public class BaseLoginTest : BaseGUITest
 {
     [SetUp]
     public void SuccessfulLoginTest()

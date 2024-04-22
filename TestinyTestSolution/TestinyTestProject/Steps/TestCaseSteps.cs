@@ -43,7 +43,7 @@ public class TestCaseSteps(IWebDriver driver) : BaseStep(driver)
     [AllureStep("Save quick new testcase button is disabled.")]
     public bool IsDisabledSaveQuickNewTestCaseButton()
     {
-        TestCasesPage = new TestCasesPage(Driver, false);        
+        TestCasesPage = new TestCasesPage(Driver, false);
 
         return TestCasesPage.IsDisabledSaveQuickNewTestCaseButtonDisplayed();
     }
