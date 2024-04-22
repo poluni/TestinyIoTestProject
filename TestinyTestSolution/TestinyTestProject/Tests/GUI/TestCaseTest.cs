@@ -18,6 +18,7 @@ public class TestCaseTest : BaseLoginTest
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     [Test]
+    [Order(1)]
     [Category("Smoke"), Category("Regression")]
     public void AddQuickNewTestCaseTest()
     {
@@ -45,6 +46,7 @@ public class TestCaseTest : BaseLoginTest
     }
 
     [Test]
+    [Order(2)]
     [Category("Smoke"), Category("Regression")]
     public void DeleteTestCaseTest()
     {
@@ -64,6 +66,7 @@ public class TestCaseTest : BaseLoginTest
     }
 
     [Test]
+    [Order(1)]
     [Category("Regression")]
     public void AddQuickNewTestCaseWithInvalidTitleTest()
     {
@@ -96,6 +99,7 @@ public class TestCaseTest : BaseLoginTest
     }
 
     [Test]
+    [Order(1)]
     [Category("Regression")]
     public void AddQuickNewTestCaseWithWhitespaceTitleTest()
     {
@@ -130,6 +134,7 @@ public class TestCaseTest : BaseLoginTest
     }
 
     [Test]
+    [Order(1)]
     [Category("Regression")]
     public void VerifyCopyMessageTestCaseTest()
     {
@@ -150,6 +155,7 @@ public class TestCaseTest : BaseLoginTest
     }
 
     [Test]
+    [Order(1)]
     [Category("Smoke"), Category("Regression")]
     public void ImportCSVNewTestCaseTest()
     {
@@ -165,7 +171,7 @@ public class TestCaseTest : BaseLoginTest
 
             _importFilesSteps.SuccessfullImportCSVFile();
 
-            Assert.That(_testCaseSteps.IsOpenedTestCasesPage());
+            Assert.That(_importFilesSteps.IsUploadedFile());
         }
     }
 }

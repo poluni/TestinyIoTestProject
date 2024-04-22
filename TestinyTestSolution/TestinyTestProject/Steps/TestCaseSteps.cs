@@ -101,7 +101,6 @@ public class TestCaseSteps(IWebDriver driver) : BaseStep(driver)
         return count;
     }
 
-    [AllureStep("Test cases dashboard is opened.")]
     public bool IsOpenedTestCasesPage()
     {
         TestCasesPage = new TestCasesPage(Driver, false);

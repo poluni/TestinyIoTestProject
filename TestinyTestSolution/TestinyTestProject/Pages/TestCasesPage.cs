@@ -60,7 +60,7 @@ public class TestCasesPage(IWebDriver? driver, bool openByURL = false) : BasePag
     {
         TitleNewTestCaseInput.SendKeys(value);
     }
-
+    
     public void FocusTitleNewTestCase()
     {
         TitleNewTestCaseInput.MoveToElement();
@@ -129,13 +129,13 @@ public class TestCasesPage(IWebDriver? driver, bool openByURL = false) : BasePag
     private UIElement TitleLabel => new(Driver, TitleBy);
     private UIElement CreateQuickTestCaseButton => new(Driver, CreateQuickTestCaseButtonBy);
     private Button ImportTestCaseButton => new Button(Driver, ImportTestCaseButtonBy);
-    private IWebElement TitleNewTestCaseInput => WaitsHelper.FluentWaitForElement(TitleNewTestCaseInputBy);
+    private UIElement TitleNewTestCaseInput => new(Driver, TitleNewTestCaseInputBy);
     private Button SaveQuickNewTestCaseButton => new Button(Driver, SaveQuickNewTestCaseButtonBy);
     private Button DisabledSaveQuickNewTestCaseButton => new Button(Driver, DisabledSaveQuickNewTestCaseButtonBy);
     internal Table TestCaseTable => new Table(Driver, TestCaseTableBy);
     private UIElement AllTestCaseUnselectedCheckbox => new (Driver, AllTestCaseUnselectedCheckboxBy);
     private UIElement AllTestCaseLink => new(Driver, AllTestCaseLinkBy);
-    private IWebElement CountTestCaseText => WaitsHelper.FluentWaitForElement(CountTestCaseText);
+    private UIElement CountTestCaseText => new(Driver, CountTestCaseTextBy);
     private Button DeleteButton => new Button(Driver, DeleteButtonBy);
     private UIElement DeletePopUpWindowText => new(Driver, DeletePopUpWindowTextBy);
     private Button DeleteConfirmationButton => new Button(Driver, DeleteConfirmationButtonBy);

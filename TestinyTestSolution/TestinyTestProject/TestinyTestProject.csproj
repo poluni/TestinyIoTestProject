@@ -16,6 +16,7 @@
     <None Remove="NLog.config" />
     <None Remove="Resources\sample_testcase.csv" />
     <None Remove="Resources\testiny_testcase_import_sample.csv" />
+    <None Remove="Services\Resources\testiny_testcase_import_sample.csv" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +31,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\testiny_testcase_import_sample.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Services\Resources\testiny_testcase_import_sample.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

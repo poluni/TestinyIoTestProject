@@ -7,6 +7,13 @@ namespace TestinyTestProject.Steps;
 
 public class ImportFilesSteps(IWebDriver driver) : BaseStep(driver)
 {
+    public bool IsUploadedFile()
+    {
+        TestCasesImportDialogue = new TestCasesImportDialogue(Driver, false);
+
+        return TestCasesImportDialogue.IsConfirmImportButtonDispleyd();
+    }
+
     [AllureStep("CSV File is successfull imported.")]
     public TestCasesPage SuccessfullImportCSVFile()
     {

@@ -17,7 +17,7 @@ public class TestCasesImportDialogue(IWebDriver? driver, bool openByURL = false)
     private static readonly By FileLinkBy = By.XPath("//a[@data-testid='link-choose-file']");
     private static readonly By MappingFieldsTextBy = By.XPath("//h4[text()='Field mapping']");
     private static readonly By ConfirmMappingFieldsButtonBy = By.XPath("//button//div[@class='button-label' and text()='OK']");
-    private static readonly By ConfirmImportButtonBy = By.XPath("//button//div[@class='button-label' and text()='Import']");
+    private static readonly By ConfirmImportButtonBy = By.XPath("//button[@data-testid='button-execute']");
 
     protected override bool EvaluateLoadedStatus()
     {
@@ -71,6 +71,11 @@ public class TestCasesImportDialogue(IWebDriver? driver, bool openByURL = false)
         ConfirmImportButton.Click();
     }
 
+    public bool IsConfirmImportButtonDispleyd()
+    {
+       return  ConfirmImportButton.Displayed;
+    }
+
     public void FileLinkClick()
     {
         FileLink.Click();
@@ -95,6 +100,6 @@ public class TestCasesImportDialogue(IWebDriver? driver, bool openByURL = false)
     private UIElement FileTitleInputText => new(Driver, FileTitleInputTextBy);
     private UIElement MappingFieldsText => new(Driver, MappingFieldsTextBy);
     private Button ConfirmMappingFieldsButton => new Button(Driver, ConfirmMappingFieldsButtonBy);
-    private IWebElement ConfirmImportButton => WaitsHelper.FluentWaitForElement(ConfirmImportButtonBy);
+    private UIElement ConfirmImportButton => new(Driver, ConfirmImportButtonBy);
     private UIElement FileInput => new(Driver, FileInputBy);
 }

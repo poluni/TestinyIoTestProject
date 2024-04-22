@@ -1,17 +1,17 @@
 ﻿using OpenQA.Selenium;
+using Allure.Net.Commons;
 using Allure.NUnit;
 using TestinyTestProject.Core;
 using TestinyTestProject.Helpers;
 using TestinyTestProject.Helpers.Configuration;
 using TestinyTestProject.Steps;
-using Allure.Net.Commons;
 using System.Text;
 using TestinyTestProject.Models;
 
 namespace TestinyTestProject.Tests;
 
 [AllureNUnit]
-public class BaseGUITest : BaseTest
+public class BaseGUITest
 {
     protected IWebDriver Driver { get; private set; }
     protected WaitsHelper WaitsHelper { get; private set; }
@@ -21,6 +21,12 @@ public class BaseGUITest : BaseTest
     protected ImportFilesSteps _importFilesSteps;
 
     protected User Admin { get; private set; }
+
+    [OneTimeSetUp]
+    public static void GlobalSetup()
+    {
+        AllureLifecycle.Instance.CleanupResultDirectory();
+    }
 
     [SetUp]
     public void FactoryDriverTest()
