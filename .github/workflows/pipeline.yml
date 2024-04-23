@@ -1,4 +1,4 @@
-name: .NET Core Desktop
+name: .NET Core Desktop new
 
 on:
   push:
@@ -28,26 +28,12 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    - name: Install Chrome
-      uses: browser-actions/setup-chrome@v1
-      with:
-        chrome-version: 124
-    - run: chrome --version
-  
-    - name: Install ChromeDriver
-      uses: nanasess/setup-chromedriver@v2
-      with:
-        # Optional: do not specify to match Chrome's version
-        chromedriver-version: '123.0.6312.12'
-    - run: |
-            chromedriver --url-base=/wd/hub &
-
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test TestinyTestSolution
 
     - name: Load test report history
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       if: always()
       continue-on-error: true
       with:
