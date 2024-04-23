@@ -2,9 +2,9 @@ name: .NET Core Desktop new
 
 on:
   push:
-    branches: [ "develop", "feature/Ci-CdV2" ]
+    branches: [ "develop", "main" ]
   pull_request:
-    branches: [ "develop", "feature/Ci-CdV2" ]
+    branches: [ "develop", "main" ]
 
 jobs:
 
@@ -29,10 +29,16 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Install Chrome
-      uses: browser-actions/setup-chrome@v1
-      with:
-        chrome-version: 123
+      uses: browser-actions/setup-chrome@latest
     - run: chrome --version
+  
+    - name: Install ChromeDriver
+      uses: nanasess/setup-chromedriver@v2
+      with:
+        # Optional: do not specify to match Chrome's version
+        chromedriver-version: '124.0.6367.6000'
+    - run: |
+            chromedriver --url-base=/wd/hub &
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
