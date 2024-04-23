@@ -2,9 +2,9 @@ name: .NET Core Desktop
 
 on:
   push:
-    branches: [ "develop", "feature/Ci-CV2" ]
+    branches: [ "develop", "feature/Ci-CdV2" ]
   pull_request:
-    branches: [ "develop", "feature/Ci-CV2" ]
+    branches: [ "develop", "feature/Ci-CdV2" ]
 
 jobs:
 
