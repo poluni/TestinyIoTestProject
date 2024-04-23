@@ -15,6 +15,7 @@ public class DriverFactory
         chromeOptions.AddArguments("--incognito");
         chromeOptions.AddArguments("--disable-gpu");
         chromeOptions.AddArguments("--disable-extensions");
+        chromeOptions.AddArguments("--headless=new");
 
         chromeOptions.SetLoggingPreference(LogType.Browser, LogLevel.All);
         chromeOptions.SetLoggingPreference(LogType.Driver, LogLevel.All);
