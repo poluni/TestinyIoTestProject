@@ -36,9 +36,9 @@ jobs:
   
     - name: Install ChromeDriver
       uses: nanasess/setup-chromedriver@v2
-      with:
+      #with:
         # Optional: do not specify to match Chrome's version
-        chromedriver-version: '123.0.6312.122'
+        #chromedriver-version: '123.0.6312.122'
     - run: |
             chromedriver --url-base=/wd/hub &
 
