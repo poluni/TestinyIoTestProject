@@ -31,14 +31,14 @@ jobs:
     - name: Install Chrome
       uses: browser-actions/setup-chrome@v1
       with:
-        chrome-version: 124
+        chrome-version: 123
     - run: chrome --version
 
     - name: Install ChromeDriver
       uses: nanasess/setup-chromedriver@v2
       with:
         # Optional: do not specify to match Chrome's version
-        chromedriver-version: '124.0.6367.6000'
+        chromedriver-version: '123.0.6312.122'
     - run: |
             chromedriver --url-base=/wd/hub &
 
