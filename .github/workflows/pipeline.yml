@@ -33,14 +33,6 @@ jobs:
       with:
         chrome-version: 123
     - run: chrome --version
-  
-    - name: Install ChromeDriver
-      uses: nanasess/setup-chromedriver@v2
-      #with:
-        # Optional: do not specify to match Chrome's version
-        #chromedriver-version: '123.0.6312.122'
-    - run: |
-            chromedriver --url-base=/wd/hub &
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
