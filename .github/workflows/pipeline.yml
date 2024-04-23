@@ -34,6 +34,14 @@ jobs:
         chrome-version: 124
     - run: chrome --version
 
+    - name: Install ChromeDriver
+      uses: nanasess/setup-chromedriver@v2
+      with:
+        # Optional: do not specify to match Chrome's version
+        chromedriver-version: '124.0.6367.6000'
+    - run: |
+            chromedriver --url-base=/wd/hub &
+
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test TestinyTestSolution
