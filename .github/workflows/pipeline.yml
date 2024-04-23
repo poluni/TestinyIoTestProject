@@ -31,7 +31,7 @@ jobs:
     - name: Install Chrome
       uses: browser-actions/setup-chrome@v1
       with:
-        chrome-version: 123
+        chrome-version: 124
     - run: chrome --version
 
     # Execute all unit tests in the solution
