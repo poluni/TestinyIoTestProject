@@ -1,0 +1,71 @@
+name: .NET Core Desktop
+
+on:
+  push:
+    branches: [ "develop", "feature/Ci-CV2" ]
+  pull_request:
+    branches: [ "develop", "feature/Ci-CV2" ]
+
+jobs:
+
+  test:
+
+    strategy:
+      matrix:
+        configuration: [Debug]
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Install Chrome
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: 124
+    - run: chrome --version
+  
+    - name: Install ChromeDriver
+      uses: nanasess/setup-chromedriver@v2
+      with:
+        # Optional: do not specify to match Chrome's version
+        chromedriver-version: '124.0.6367.61'
+    - run: |
+            chromedriver --url-base=/wd/hub &
+
+    # Execute all unit tests in the solution
+    - name: Execute unit tests
+      run: dotnet test TestinyTestSolution
+
+    - name: Load test report history
+      uses: actions/checkout@v3
+      if: always()
+      continue-on-error: true
+      with:
+        ref: gh-pages
+        path: gh-pages
+        
+    - name: Build test report
+      uses: simple-elf/allure-report-action@v1.7
+      if: always()
+      with:
+        gh_pages: gh-pages
+        allure_history: allure-history
+        allure_results: TestinyTestProject/bin/Debug/net8.0/allure-results
+
+    - name: Publish test report
+      uses: peaceiris/actions-gh-pages@v3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: allure-history 
